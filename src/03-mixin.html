@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.min.js"></script>
+    <title>slot-list</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const mixin = {
+            data() {
+                return {
+                    x: 0,
+                    y: 0
+                }
+            },
+            methods: {
+                handleMousemove(e) {
+                    this.x = e.pageX
+                    this.y = e.pageY
+                }
+            },
+            mounted() {
+                window.addEventListener('mousemove', this.handleMousemove)
+            },
+            destoryed(){
+                window.removeEventListener('mousemove', this.handleMousemove)
+            }
+        }
+        const Foo = {
+            mixins: [mixin],
+            template: `
+                <div>
+                    mouse : x:{{x}} y:{{y}}    
+                </div>
+            `
+        }
+        const app = new Vue({
+            el: "#app",
+            components: {
+                Foo
+            },
+            template: `
+                <div>
+                    <Foo></Foo>    
+                </div>      
+            `
+        })
+    </script>
+</body>
+</html>
