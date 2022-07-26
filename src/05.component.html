@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.min.js"></script>
+    <title>slot-list</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="clickComponent('Home')">Home</button>
+        <button @click="clickComponent('Post')">Post</button>
+        <button @click="clickComponent('Archive')">Archive</button>
+        <div>
+            <!-- <Home v-show="componentName === 'Home'"></Home>
+            <Post v-show="componentName === 'Post'"></Post>
+            <Archive v-show="componentName === 'Archive'"></Archive> -->
+            <component :is="componentName"></component>
+        </div>
+    </div>
+    <script>
+        const Home = {
+            template: '<div>home</div>'
+        }
+        const Post = {
+            template: '<div>post</div>'
+        }
+        const Archive = {
+            template: '<div>archive</div>'
+        }
+        const componentMap = {
+            Home: {
+                template: '<div>home</div>'
+            },
+            Post: {
+                template: '<div>post</div>'
+            },
+            Archive: {
+                template: '<div>archive</div>'
+            }
+        }
+        const app = new Vue({
+            el: "#app",
+            components: {
+                Home,
+                Post,
+                Archive
+            },
+            data: {
+                // componentName: 'Home'
+                // componentName: {
+                //     template: '<div>home</div>'
+                // }
+                componentName: componentMap['Home']
+            },
+            methods: {
+                clickComponent(componentName) {
+                    this.componentName = componentMap[componentName]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

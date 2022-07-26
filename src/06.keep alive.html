@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.min.js"></script>
+    <title>slot-list</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="clickComponent('Home')">Home</button>
+        <button @click="clickComponent('Post')">Post</button>
+        <button @click="clickComponent('Archive')">Archive</button>
+        <div>
+            <keep-alive exclude="Home">
+                <component :is="componentName"></component>
+            </keep-alive>
+        </div>
+    </div>
+    <script>
+        const Home = {
+            template: 
+                `<div>
+                    <input></input>
+                </div>`,
+            activated(){
+                console.log('home - 激活')
+            },
+            deactivated(){
+                console.log('home - 失效')
+            }
+        }
+        const Post = {
+            template: '<div>post</div>',
+            activated(){
+                console.log('post - 激活')
+            },
+            deactivated(){
+                console.log('post - 失效')
+            }
+        }
+        const Archive = {
+            template: '<div>archive</div>'
+        }
+        const app = new Vue({
+            el: "#app",
+            components: {
+                Home,
+                Post,
+                Archive
+            },
+            data: {
+                componentName: 'Home'
+            },
+            methods: {
+                clickComponent(componentName) {
+                    this.componentName = componentName
+                }
+            }
+        })
+    </script>
+</body>
+</html>
