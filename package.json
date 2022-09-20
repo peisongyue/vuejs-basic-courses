@@ -1,0 +1,9 @@
+{
+  "name": "hello-yarn",
+  "version": "1.0.0",
+  "description": "learn yarn",
+  "main": "index.js",
+  "repository": "https://github.com/peisongyue/vuejs-basic-courses.git",
+  "author": "haiwei.yuan <haiwei.yuan@pcitc.com>",
+  "license": "MIT"
+}
