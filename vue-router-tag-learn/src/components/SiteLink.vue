@@ -47,10 +47,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .site-link {
+.site-link {
   display: flex;
   justify-content: space-around;
-  padding: 0.8em 0;
+  padding: 0.8rem 0;
   text-align: center;
 
   a {
@@ -62,7 +62,7 @@ export default {
     &:hover,
     &:active {
       color: $color;
-      transform: scale(1.2);
+      transform: scale(1.5);
     }
   }
 }

@@ -1,11 +1,15 @@
 import Vue from "vue";
-import Router from "vue-router"
+import Router from "vue-router";
 
-Vue.use(Router)
+Vue.use(Router);
 
-const routes = []
+const routes = [
+  {
+    path: "/",
+    redirect: "/default/page/1",
+  },
+];
 
+const $router = new Router({ routes });
 
-const $router = new Router({ routes })
-
-export default $router
+export default $router;

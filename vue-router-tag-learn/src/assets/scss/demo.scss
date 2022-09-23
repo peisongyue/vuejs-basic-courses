@@ -1,0 +1,165 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  color: $text;
+}
+
+/* PC 滚动条 */
+@include screen-pc {
+  ::-webkit-scrollbar {
+    $w: 6px;
+    $mw: 3px;
+    width: $w;
+    height: $w;
+
+    &-thumb {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+
+      &:hover {
+        background: rgba($color, 0.5);
+      }
+
+      &:active {
+        background: rgba($color, 0.8);
+      }
+    }
+
+    &-corner {
+      display: none;
+    }
+  }
+}
+
+// 图标
+[class^='rt-icon-'],
+[class*=' rt-icon-'] {
+  font-family: 'rtfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:link {
+  transition: color 0.3s ease-in-out;
+}
+
+code {
+  color: #f40;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 0.85em;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+}
+
+// 强提示
+.text-strong {
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #f50;
+}
+
+// 按钮
+.demo-btn {
+  $activeColor: mix(#000, $color, 20%);
+
+  display: inline-block;
+  margin: 0 1em 0.5em 0;
+  padding: 3px 8px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $color;
+    border-color: $color;
+  }
+
+  &:active {
+    color: $activeColor;
+    border-color: $activeColor;
+  }
+
+  &.link {
+    &:hover {
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+
+    &.router-link-exact-active {
+      color: #fff;
+      background-color: $color-primary;
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &.primary {
+    color: #fff;
+    background: $color;
+    border-color: $color;
+
+    &:hover {
+      border-color: $activeColor;
+    }
+
+    &:active {
+      background: $activeColor;
+    }
+  }
+}
+
+// 表格
+.demo-table {
+  $bg: #e5fff3;
+  min-width: 300px;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 400;
+    background-color: #f7f7f7;
+  }
+
+  tr:hover {
+    background-color: rgba($bg, 0.6);
+  }
+
+  .on {
+    background-color: $bg;
+  }
+}
+
+// 页签组件 - 全屏
+.router-tab.is-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+}
