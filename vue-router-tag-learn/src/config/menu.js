@@ -1,9 +1,9 @@
 export default [
   {
-    text: "RouterTab 配置",
+    text: "基础",
     children: [
-      { text: "默认配置", to: "/default" },
-      { text: "初始展示页签", to: "/initial-tabs" },
+      { text: "起步", to: "/qibu" },
+      { text: "动态路由匹配", to: "/dongTaiRouterChange" },
       { text: "刷新还原页签", to: "/restore" },
       { text: "Iframe 页签", to: "/iframe" },
     ],

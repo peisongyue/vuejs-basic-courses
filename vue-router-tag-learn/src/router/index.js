@@ -1,12 +1,18 @@
 import Vue from "vue";
 import Router from "vue-router";
+import { pages } from "./page.js";
 
 Vue.use(Router);
 
 const routes = [
   {
     path: "/",
-    redirect: "/default/page/1",
+    redirect: "/qibu",
+  },
+  ...pages,
+  {
+    path: "*",
+    component: () => import("../components/Error.vue"),
   },
 ];
 
