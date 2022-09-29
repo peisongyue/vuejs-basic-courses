@@ -13,6 +13,8 @@
       <router-link to="/dongTaiRouterChange/foo">To Foo</router-link>
       <router-link to="/dongTaiRouterChange/bar">To Bar</router-link>
       <p>{{ this.$route.params.id }}</p>
+      <h3>编程式导航返回</h3>
+      <button @click="back">back</button>
     </div>
   </div>
 </template>
@@ -32,7 +34,11 @@ export default {
   computed: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
   // eslint-disable-next-line no-unused-vars
   beforeRouteUpdate(to, from, next) {
     console.log(to, from);

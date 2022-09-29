@@ -4,8 +4,10 @@ export default [
     children: [
       { text: "起步", to: "/qibu" },
       { text: "动态路由匹配", to: "/dongTaiRouterChange" },
-      { text: "刷新还原页签", to: "/restore" },
-      { text: "Iframe 页签", to: "/iframe" },
+      { text: "嵌套编程式路由", to: "/qiTaoCode" },
+      { text: "命名视图 & 命名路由", to: "/nameView" },
+      { text: "重定向 & 别名", to: "/redirectAlisa" },
+      { text: "组件路由传参", to: "/routerProps" },
     ],
   },
   {
