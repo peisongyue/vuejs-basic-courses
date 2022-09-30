@@ -96,8 +96,48 @@ export const pages = [
     // props: true,
     // props: { id: "111" },
     props: (route) => {
-      console.log("page.js", route);
+      // console.log("page.js", route);
       return { id: "111", pp: route.query.pp };
     },
+  },
+  {
+    name: "RouterEye",
+    path: "/routerEye",
+    component: () => import("../Views/RouterEye.vue"),
+    beforeEnter: (to, from, next) => {
+      console.log("router route beforeEnter");
+      console.log("beforeEnter", to, from);
+      next();
+    },
+  },
+  {
+    name: "RouterMeta",
+    path: "/routerMeta",
+    component: () => import("../Views/RouterMeta.vue"),
+    children: [
+      {
+        name: "Meta",
+        path: "meta",
+        component: () => import("../Views/RouterMeta/Meta.vue"),
+        meta: { isLogin: true },
+      },
+    ],
+  },
+  {
+    name: "Transition",
+    path: "/transition",
+    component: () => import("../Views/Transition.vue"),
+    children: [
+      {
+        name: "Foo",
+        path: "foo",
+        component: () => import("../Views/Transition/Foo.vue"),
+      },
+    ],
+  },
+  {
+    name: "GetData",
+    path: "/getData/:id",
+    component: () => import("../Views/GetData.vue"),
   },
 ];

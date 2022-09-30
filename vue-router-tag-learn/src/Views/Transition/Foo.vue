@@ -1,24 +1,23 @@
 <template>
   <div class="className">
-    <h2>RouterProps</h2>
-    <p>router params id : {{ id }}</p>
-    <p>router query pp : {{ pp }}</p>
+    <!-- <transition name="fade">
+      <h3>Foo</h3>
+    </transition> -->
+    <h3>Foo</h3>
   </div>
 </template>
 <script>
 export default {
-  name: "RouterProps",
+  name: "Foo",
   components: {},
-  props: ["id", "pp"],
+  props: {},
   data() {
     return {};
   },
   watch: {},
   computed: {},
   created() {},
-  mounted() {
-    // console.log("component", this.$route);
-  },
+  mounted() {},
   methods: {},
 };
 </script>

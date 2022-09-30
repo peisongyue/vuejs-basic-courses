@@ -1,24 +1,20 @@
 <template>
   <div class="className">
-    <h2>RouterProps</h2>
-    <p>router params id : {{ id }}</p>
-    <p>router query pp : {{ pp }}</p>
+    <h3>Meta</h3>
   </div>
 </template>
 <script>
 export default {
-  name: "RouterProps",
+  name: "Meta",
   components: {},
-  props: ["id", "pp"],
+  props: {},
   data() {
     return {};
   },
   watch: {},
   computed: {},
   created() {},
-  mounted() {
-    // console.log("component", this.$route);
-  },
+  mounted() {},
   methods: {},
 };
 </script>

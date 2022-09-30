@@ -11,12 +11,12 @@ export default [
     ],
   },
   {
-    text: "个性化",
+    text: "进阶",
     children: [
-      { text: "过渡效果", to: "/transition" },
-      { text: "插槽", to: "/slot" },
-      { text: "右键菜单", to: "/contextmenu" },
-      { text: "拖拽排序-禁用", to: "/dragsort" },
+      { text: "导航守卫", to: "/routerEye" },
+      { text: "路由元信息", to: "/routerMeta" },
+      { text: "过度动效", to: "/transition" },
+      { text: "数据获取", to: "/getData" },
       { text: "新页签插入位置", to: "/append" },
       { text: "关闭最后的页签", to: "/close-last-tab" },
       { text: "滚动位置", to: "/page-scroller/" },
