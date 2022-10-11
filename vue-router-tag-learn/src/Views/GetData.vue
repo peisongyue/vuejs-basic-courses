@@ -49,6 +49,10 @@ export default {
       vm.fetchData(to.params.id, false);
     });
   },
+  beforeRouteUpdate(to, from, next) {
+    next()
+    this.fetchData(to.params.id, false)
+  },
 };
 </script>
 <style>
