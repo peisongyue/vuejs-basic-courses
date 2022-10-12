@@ -4,6 +4,7 @@
     <div>title: {{ title }}</div>
     <div>msg: {{ msg }}</div>
     <button @click="toParent">to Parent</button>
+    <button @click="getParent">getParent</button>
   </div>
 </template>
 <script>
@@ -28,6 +29,10 @@ export default {
     },
     setMsg(val) {
       this.msg = val;
+    },
+    getParent() {
+      console.log("$parent:", this.$parent);
+      // console.log(this.$parent.foucs());
     },
   },
 };

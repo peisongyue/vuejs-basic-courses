@@ -10,6 +10,7 @@
     <button @click="HandleGetChildByRef">HandleGetChildByRef</button>
     <button @click="foucs">focus</button>
     <input type="text" ref="input" />
+    <button @click="getChildren">getChildren</button>
   </div>
 </template>
 <script>
@@ -39,6 +40,10 @@ export default {
     foucs() {
       console.log(this.$refs);
       this.$refs.input.focus();
+    },
+    getChildren() {
+      console.log("$children: ", this.$children);
+      this.$children[0].setMsg("$children: this is msg from Parent");
     },
   },
 };
