@@ -1,0 +1,9 @@
+{
+  "name": "learn-promise",
+  "version": "1.0.0",
+  "main": "y",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./src/index.js"
+  }
+}
