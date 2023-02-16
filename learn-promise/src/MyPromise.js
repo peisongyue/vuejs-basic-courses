@@ -3,10 +3,17 @@ const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 class MyPromise {
+
   constructor(executor) {
-    // executor 是一个执行器，进入会立即执行
-    // 并传入resolve和reject方法
-    executor(this.resolve, this.reject)
+
+    try {
+      // executor 是一个执行器，进入会立即执行
+      // 并传入resolve和reject方法
+      executor(this.resolve, this.reject)
+    } catch (error) {
+      this.reject(error)
+    }
+    
   }
 
   // 存储状态的变量，初始值是pending
@@ -75,6 +82,8 @@ class MyPromise {
     //   this.onFulfilledCallback.push(onFulfilled)
     //   this.onRejectedCallback.push(onRejected)
     // }
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value
+    onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason}
 
 
     // 为了链式调用这里直接创建一个MyPromise, 并在后面return
@@ -83,19 +92,62 @@ class MyPromise {
 
         // 创建一个微任务等待promise2完成初始化
         queueMicrotask(() => {
-          // 获取成功回调函数的执行结果
-          const x = onFulfilled(this.value)
-          // 传入resolvePromise集中处理
-          resolvePromise(promise2, x, resolve, reject)
+          try {
+            // 获取成功回调函数的执行结果
+            const x = onFulfilled(this.value)
+            // 传入resolvePromise集中处理
+            resolvePromise(promise2, x, resolve, reject)
+          } catch (error) {
+            reject(error)
+          }
         })
       } else if (this.status === REJECTED) {
-        onRejected(this.reason)
+        queueMicrotask(() => {
+          try {
+            const x = onRejected(this.reason)
+            resolvePromise(promise2, x, resolve, reject)
+          } catch (error) {
+            reject(error)
+          }
+        })
+        // onRejected(this.reason)
       } else if (this.status === PENDING) {
-        this.onFulfilledCallback.push(onFulfilled)
-        this.onRejectedCallback.push(onRejected)
+        this.onFulfilledCallback.push(() => {
+          queueMicrotask(() => {
+            try {
+              const x = onFulfilled(this.value)
+              resolvePromise(promise2, x, resolve, reject)
+            } catch (error) {
+              reject(error)
+            }
+          })
+        })
+        this.onRejectedCallback.push(() => {
+          try {
+            const x = onRejected(this.reason)
+            resolvePromise(promise2, x, resolve, reject)
+          } catch (error) {
+            reject(error)
+          }
+        })
       }
     })
     return promise2
+  }
+
+  static resolve(parameter) {
+    if (parameter instanceof MyPromise) {
+      return parameter
+    }
+    return new MyPromise(resolve => {
+      resolve(parameter)
+    })
+  }
+
+  static reject(reason) {
+    return new MyPromise((resolve, reject) => {
+      reject(reason)
+    })
   }
 }
 
@@ -114,6 +166,15 @@ function resolvePromise(promise2, x, resolve, reject) {
   } else {
     resolve(x)
   }
+}
+
+MyPromise.deferred = function() {
+  var result = {}
+  result.promise = new MyPromise(function(resolve, reject) {
+    result.resolve = resolve
+    result.reject = reject
+  })
+  return result
 }
 
 module.exports = MyPromise
