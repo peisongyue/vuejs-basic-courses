@@ -16,21 +16,21 @@ const MyPromise = require('./MyPromise')
 // }).then(() => {
 //   console.log(6);
 // })
-const promise = new MyPromise((resolve, reject) => {
-  // setTimeout(() => {
-  //   resolve('success')
-  // }, 2000)
-  // reject('err')
-  resolve('success')
-  // throw new Error('执行器错误')
-})
+// const promise = new MyPromise((resolve, reject) => {
+//   // setTimeout(() => {
+//   //   resolve('success')
+//   // }, 2000)
+//   // reject('err')
+//   resolve('success')
+//   // throw new Error('执行器错误')
+// })
 
-promise.then(value => {
-  console.log('resolve', value);
-  return '111'
-}).then((data) => {
-  console.log('then return', data);
-})
+// promise.then(value => {
+//   console.log('resolve', value);
+//   return '111'
+// }).then((data) => {
+//   console.log('then return', data);
+// })
 // promise.then().then().then(value => console.log(value))
 
 // **** 捕获错误，及then链式调用其他状态代码补充 **** 

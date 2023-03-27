@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "main": "./index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev7": "node ./src/es7.js",
+    "dev8": "node ./src/es8.js",
+    "dev9": "node ./src/es9.js"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
