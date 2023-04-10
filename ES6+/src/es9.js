@@ -26,3 +26,17 @@ console.log(newObj); // { a: 'a', d: 'd', e: 'e' }
 
 //正则之 s 修饰符：dotAll 模式
 // TODO fix this 
+
+// 正则之具名组匹配
+const date = /(\d{4})-(\d{2})-(\d{2})/.exec("2020-01-01");
+console.log("date", date);
+
+const reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
+console.log(reg.exec('2020-01-01'));
+const groups = reg.exec('2020-01-01').groups
+const { year, month, day } = groups
+console.log(year, month, day);
+// 2020 01 01
+
+// 正则之后行断言
+// TODO fix this

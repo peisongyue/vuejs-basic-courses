@@ -5,9 +5,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev": "node ./index.js",
+    "dev6": "node ./src/es6.js",
     "dev7": "node ./src/es7.js",
     "dev8": "node ./src/es8.js",
-    "dev9": "node ./src/es9.js"
+    "dev9": "node ./src/es9.js",
+    "dev10": "node ./src/es10.js",
+    "dev11": "node ./src/es11.js",
+    "dev12": "node ./src/es12.js"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0"
