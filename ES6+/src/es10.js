@@ -29,10 +29,10 @@ const map = new Map([
   ['foo', 'bar'],
   ['fax', 42]
 ])
-console.log(Object.fromEntries(map));
+console.log('map1', Object.fromEntries(map));
 
 const map2 = new Map().set('foo', true).set('bar', false)
-console.log(Object.fromEntries(map2));
+console.log('map2', Object.fromEntries(map2));
 
 // 2 浏览器查询参数转换为对象
 let query = Object.fromEntries(new URLSearchParams('foo=bar&bax=41'))

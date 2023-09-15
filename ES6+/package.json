@@ -12,7 +12,9 @@
     "dev9": "node ./src/es9.js",
     "dev10": "node ./src/es10.js",
     "dev11": "node ./src/es11.js",
-    "dev12": "node ./src/es12.js"
+    "dev12": "node ./src/es12.js",
+    "operator": "node ./src/operator.js",
+    "setmap": "node ./src/setmap.js"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0"
